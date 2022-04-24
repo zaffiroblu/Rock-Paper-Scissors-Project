@@ -7,6 +7,65 @@
 <body>
   <script>
 
+// This defines the available choices for both players.
+let gameArray = [
+  "rock",
+  "paper",
+  "scissors"
+];
+
+// This lets the human input rock, paper, or scissors
+const humanPlay = prompt("Rock, paper, or scissors?").toLowerCase();
+switch (humanPlay) {
+    case "rock":
+      console.log("You have chosen rock.");
+      break;
+    case "paper":
+      console.log("You have chosen paper.");
+      break;
+    case "scissors":
+      console.log("You have chosen scissors.");
+      break;
+   default:
+      console.log ("Please try again, and type either rock, paper, or scissors.");
+}
+
+// This converts the human's choice to a number.
+function convertHumPlay(humanPlay) {
+    if (humanPlay == "rock") {
+        console.log ("0");
+
+    } else if (humanPlay == "paper") {
+        console.log ("1");
+
+    } else {
+        console.log ("2");
+    }
+}
+convertHumPlay(humanPlay)
+
+
+// This generates a random computer choice.
+let computerPlay = gameArray[Math.floor(Math.random()*gameArray.length)];
+
+// This returns some feedback text (including the computer’s choice) to the human.
+console.log(`The computer has chosen ${computerPlay}.`);
+
+// This converts the choice to a number.
+function convertComPlay(computerPlay) {
+    if (computerPlay == "rock") {
+        console.log ("0");
+
+    } else if (computerPlay == "paper") {
+        console.log ("1");
+
+    } else {
+        console.log ("2");
+    }
+}
+convertComPlay(computerPlay)
+
+
 
   </script>
 
