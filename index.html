@@ -15,57 +15,77 @@ let gameArray = [
 ];
 
 // This lets the human input rock, paper, or scissors
-const humanPlay = prompt("Rock, paper, or scissors?").toLowerCase();
-switch (humanPlay) {
-    case "rock":
-      console.log("You have chosen rock.");
-      break;
-    case "paper":
-      console.log("You have chosen paper.");
-      break;
-    case "scissors":
-      console.log("You have chosen scissors.");
-      break;
-   default:
-      console.log ("Please try again, and type either rock, paper, or scissors.");
-}
+let humanPlay = prompt("Rock, paper, or scissors?").toLowerCase();
+
+// This returns the human's choice as a string (feedback text).
+console.log(`You have chosen ${humanPlay}.`);
+
 
 // This converts the human's choice to a number.
 function convertHumPlay(humanPlay) {
     if (humanPlay == "rock") {
-        console.log ("0");
+        let result = 0;
+        return result;
 
     } else if (humanPlay == "paper") {
-        console.log ("1");
+        let result = 1;
+        return result;
 
     } else {
-        console.log ("2");
+        let result = 2;
+        return result;
     }
 }
-convertHumPlay(humanPlay)
+
+// Experiment: this simply renames the more complex function so I can use it later in another function!
+let humResult = convertHumPlay(humanPlay);
 
 
 // This generates a random computer choice.
 let computerPlay = gameArray[Math.floor(Math.random()*gameArray.length)];
 
-// This returns some feedback text (including the computer’s choice) to the human.
+// This returns some feedback text (including the computer’s choice).
 console.log(`The computer has chosen ${computerPlay}.`);
 
 // This converts the choice to a number.
 function convertComPlay(computerPlay) {
     if (computerPlay == "rock") {
-        console.log ("0");
+        let result = 0;
+        return result;
 
     } else if (computerPlay == "paper") {
-        console.log ("1");
+        let result = 1;
+        return result;
 
     } else {
-        console.log ("2");
+        let result = 2;
+        return result;
     }
 }
-convertComPlay(computerPlay)
+
+// Experiment: this simply renames the more complex function so I can use it later in another function. 
+let comResult = convertComPlay(computerPlay);
+
+// This subtracts the computer's converted value from the human's.
+let humMinusCom = humResult - comResult;
 
 
+// This is a switch function that returns who won this round.
+switch (humMinusCom) {
+    case 0:
+       console.log("This round is a draw.");
+      break;
+    case -2:
+    case 1:
+      console.log("You win this round! Nice :-).");
+      break;
+    case -1:
+    case 2:
+      console.log("The computer beat you in this round! Better luck next time.");
+      break;
+   default:
+      console.log("Error, please try again.");
+}
 
   </script>
 
