@@ -7,8 +7,8 @@
 <body>
   <script>
 
-// IDEA: Maybe I can create an array to keep track of points?
-// Here are some arrays to keep track of the points for each.
+
+// Here are some vars to keep track of the points for the human and for the computer.
 var humPoints = 0;
 var comPoints = 0;
 
@@ -22,39 +22,31 @@ var gameArray = [
 
 function playRound() {
 
-// This lets the human input rock, paper, or scissors
+// This lets the human input something.
 let humanPlay = prompt("Heya! Let's play 'til someone gets 3 points.\nRock, paper, or scissors?").toLowerCase();
 
 // This logs the human's choice as a string (feedback text).
 console.log(`NEW ROUND: You've gone with ${humanPlay}.`);
 
-// This converts the choices to numbers.
+// This converts the choices (human or computer) to numbers.
 function convertPlay(input) {
-    if (input == "rock") {
-        return 0;
-
-    } else if (input == "paper") {
-        return 1;
-
-    } else if (input == "scissors") {
-        return 2;
-    
+    index = gameArray.indexOf(input)
+    if (index === -1) {
+        console.log("Um, hang on... why didn't you choose rock, paper, or scissors?")
     } else {
-        console.log("Um, hang on... why didn't you choose rock, paper or scissors?")
+        return index;
     }
 }
 
-// This assigns a variable to a function and input for the human's choice.
+// This assigns a variable to the convertPlay function and input for the human's choice.
 let humResult = convertPlay(humanPlay);
 
 // This generates a random computer choice.
-let computerPlay = gameArray[Math.floor(Math.random()*gameArray.length)];
+let comResult = Math.floor(Math.random()*gameArray.length);
+let computerPlay = gameArray[comResult];
 
 // This logs the computer's choice.
 console.log(`I've chosen ${computerPlay}.`);
-
-// This assigns a variable to a function and input for the computer's choice. 
-let comResult = convertPlay(computerPlay); 
 
 // This subtracts the computer's converted value from the human's.
 let humMinusCom = humResult - comResult;
