@@ -28,7 +28,7 @@ let humanPlay = prompt("Heya! Let's play 'til someone gets 3 points.\nRock, pape
 // This logs the human's choice as a string (feedback text).
 console.log(`NEW ROUND: You've gone with ${humanPlay}.`);
 
-// This converts the choices (human or computer) to numbers.
+// This converts the choices (human to numbers.
 function convertPlay(input) {
     index = gameArray.indexOf(input)
     if (index === -1) {
@@ -41,17 +41,21 @@ function convertPlay(input) {
 // This assigns a variable to the convertPlay function and input for the human's choice.
 let humResult = convertPlay(humanPlay);
 
-// This generates a random computer choice.
+// This generates a random computer choice (as a number value, 
+// 0, 1 or 2, since that is the number of items in the gameArray),
 let comResult = Math.floor(Math.random()*gameArray.length);
+
+// This converts the number from right above in comResult (0, 1, or 2) to the string in the gameArray
+// (that is, to the words "rock," "paper," or "scissors.")
 let computerPlay = gameArray[comResult];
 
 // This logs the computer's choice.
 console.log(`I've chosen ${computerPlay}.`);
 
-// This subtracts the computer's converted value from the human's.
+// This subtracts the computer's number result from the human's.
 let humMinusCom = humResult - comResult;
 
-// This is a switch function that returns who won this round.
+// This is a switch function that returns who won the round.
 switch (humMinusCom) {
     case 0:
       console.log("This round is a draw.");
