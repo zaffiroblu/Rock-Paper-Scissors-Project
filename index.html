@@ -7,85 +7,99 @@
 <body>
   <script>
 
+// IDEA: Maybe I can create an array to keep track of points?
+// Here are some arrays to keep track of the points for each.
+var humPoints = 0;
+var comPoints = 0;
+
+
 // This defines the available choices for both players.
-let gameArray = [
+var gameArray = [
   "rock",
   "paper",
   "scissors"
 ];
 
+function playRound() {
+
 // This lets the human input rock, paper, or scissors
-let humanPlay = prompt("Rock, paper, or scissors?").toLowerCase();
+let humanPlay = prompt("Heya! Let's play 'til someone gets 3 points.\nRock, paper, or scissors?").toLowerCase();
 
-// This returns the human's choice as a string (feedback text).
-console.log(`You have chosen ${humanPlay}.`);
+// This logs the human's choice as a string (feedback text).
+console.log(`NEW ROUND: You've gone with ${humanPlay}.`);
 
+// This converts the choices to numbers.
+function convertPlay(input) {
+    if (input == "rock") {
+        return 0;
 
-// This converts the human's choice to a number.
-function convertHumPlay(humanPlay) {
-    if (humanPlay == "rock") {
-        let result = 0;
-        return result;
+    } else if (input == "paper") {
+        return 1;
 
-    } else if (humanPlay == "paper") {
-        let result = 1;
-        return result;
-
+    } else if (input == "scissors") {
+        return 2;
+    
     } else {
-        let result = 2;
-        return result;
+        console.log("Um, hang on... why didn't you choose rock, paper or scissors?")
     }
 }
 
-// Experiment: this simply renames the more complex function so I can use it later in another function!
-let humResult = convertHumPlay(humanPlay);
-
+// This assigns a variable to a function and input for the human's choice.
+let humResult = convertPlay(humanPlay);
 
 // This generates a random computer choice.
 let computerPlay = gameArray[Math.floor(Math.random()*gameArray.length)];
 
-// This returns some feedback text (including the computer’s choice).
-console.log(`The computer has chosen ${computerPlay}.`);
+// This logs the computer's choice.
+console.log(`I've chosen ${computerPlay}.`);
 
-// This converts the choice to a number.
-function convertComPlay(computerPlay) {
-    if (computerPlay == "rock") {
-        let result = 0;
-        return result;
-
-    } else if (computerPlay == "paper") {
-        let result = 1;
-        return result;
-
-    } else {
-        let result = 2;
-        return result;
-    }
-}
-
-// Experiment: this simply renames the more complex function so I can use it later in another function. 
-let comResult = convertComPlay(computerPlay);
+// This assigns a variable to a function and input for the computer's choice. 
+let comResult = convertPlay(computerPlay); 
 
 // This subtracts the computer's converted value from the human's.
 let humMinusCom = humResult - comResult;
 
-
 // This is a switch function that returns who won this round.
 switch (humMinusCom) {
     case 0:
-       console.log("This round is a draw.");
+      console.log("This round is a draw.");
       break;
     case -2:
     case 1:
-      console.log("You win this round! Nice :-).");
+      console.log("You win this round!");
+      humPoints += 1;
       break;
     case -1:
     case 2:
-      console.log("The computer beat you in this round! Better luck next time.");
+      console.log("I win this round!");
+      comPoints += 1;
       break;
    default:
-      console.log("Error, please try again.");
+      console.log("You're wasting my computing power. PLEASE choose either rock, paper, or scissors now.");
+    }
 }
+
+// This is a loop that plays the function "playRound" until someone reaches 3 points,
+// and it also logs the score after each round.
+while(humPoints < 3 && comPoints < 3) {
+    playRound()
+    console.log(`The score is ${humPoints} to ${comPoints}.`);
+}
+
+// This is a function that announces the winner of the game.
+function endOfRound() {
+    if (humPoints == 3) {
+        console.log("Yes indeed, you've gotten to 3 points before I could. You win the game! Congrats.");
+
+    } else if (comPoints == 3) {
+        console.log("Well well well, it seems I've gotten to 3 points before you. You lose the game! So sorry about that.");
+
+    } else {
+        console.log("Um, sorry, looks like something went wrong. Refresh the page?")
+    }
+}
+
+endOfRound();
 
   </script>
 
