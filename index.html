@@ -22,7 +22,7 @@
         // This logs the human's choice as a string (feedback text).
         console.log(`NEW ROUND: You've gone with ${humanPlay}.`);
 
-        // This converts the choices (human to numbers.
+        // This converts the human's string choice to a number.
         function convertPlay(input) {
           index = gameArray.indexOf(input);
           if (index === -1) {
@@ -35,14 +35,15 @@
         }
 
         // This assigns a variable to the convertPlay function and input for the human's choice.
+        // I am doing this because I just want it to look cleaner later on down the line.
         let humResult = convertPlay(humanPlay);
 
         // This generates a random computer choice (as a number value,
-        // 0, 1 or 2, since that is the number of items in the gameArray),
+        // 0, 1 or 2, since that is the number of items in the gameArray.)
         let comResult = Math.floor(Math.random() * gameArray.length);
 
         // This converts the number from right above in comResult (0, 1, or 2) to the string in the gameArray
-        // (that is, to the words "rock," "paper," or "scissors.")
+        // (More precisely, to the words "rock," "paper," or "scissors.")
         let computerPlay = gameArray[comResult];
 
         // This logs the computer's choice.
@@ -81,7 +82,7 @@
       }
 
       // This is a function that announces the winner of the game.
-      function endOfRound() {
+      function endOfGame() {
         if (humPoints == 3) {
           console.log(
             "Yes indeed, you've gotten to 3 points before I could. You win the game! Congrats."
@@ -97,7 +98,7 @@
         }
       }
 
-      endOfRound();
+      endOfGame();
     </script>
   </body>
 </html>
