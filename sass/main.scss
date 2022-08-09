@@ -1,0 +1,11 @@
+//customized variables
+$primary: #9165ff;
+$secondary: #ffd953;
+$info: #53ceff;
+
+//import Bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+.maxw-80 {
+	max-width: 80px;
+}
