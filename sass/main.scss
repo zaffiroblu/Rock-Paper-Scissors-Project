@@ -1,22 +1,489 @@
 //import Bootstrap
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
-$rock: #9165ff;
-$paper: #ffc965;
-$scissors: #53ceff;
+$rock: #53ceff;
+$paper: #f8b461;
+$scissors: #80cc0f;
 
-.btn-rock {
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: white;
+	max-width: 415px;
+	max-height: 900px;
+	margin: 0 auto;
+}
+
+p {
+	font-size: 0.9rem;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+span {
+	padding: 5px;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+#app-container {
+	height: 100vh;
+	min-height: 500px;
+	max-width: 415px;
+	max-height: 900px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: rgb(240, 251, 255);
+	background: linear-gradient(
+		0deg,
+		rgba(240, 251, 255, 1) 0%,
+		rgba(252, 254, 255, 1) 100%
+	);
+	border: solid 1px black;
+}
+
+//*_*_*_*_*_*_*_* Kitchen Section *_*_*_*_*_*_*//
+
+#kitchen {
+	height: 25%;
+	margin: 0px;
+}
+
+#kitchen-scene {
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	background-color: #e5e5f7;
+	background-image: repeating-linear-gradient(
+			45deg,
+			#92d9ee 25%,
+			transparent 25%,
+			transparent 75%,
+			#92d9ee 75%,
+			#92d9ee
+		),
+		repeating-linear-gradient(
+			45deg,
+			#92d9ee 25%,
+			#e5e5f7 25%,
+			#e5e5f7 75%,
+			#92d9ee 75%,
+			#92d9ee
+		);
+	background-position: 0 0, 10px 10px;
+	background-size: 20px 20px;
+	border-bottom: 1px solid black;
+}
+
+#ice-cream {
+	height: auto;
+	width: calc(60px + 8vw);
+	padding-right: 15px;
+}
+
+//*_*_*_*_*_*_*_* Weapons Section *_*_*_*_*_*_*//
+
+#weapons {
+	height: 20%;
+	overflow: hidden;
+}
+
+.weapon {
+	align-items: stretch;
+	margin-right: 15px;
+	margin-left: 15px;
+	flex-grow: 1;
+	min-width: 80px;
+}
+
+.btn {
+	align-items: center;
+}
+
+#id-rock {
 	@include button-outline-variant($rock);
 }
 
-.btn-paper {
+#id-paper {
 	@include button-outline-variant($paper);
 }
 
-.btn-scissors {
+#id-scissors {
 	@include button-outline-variant($scissors);
 }
 
-.maxw-80 {
-	max-width: 80px;
+.btn img {
+	z-index: 0;
+	max-width: 100%;
+	height: auto;
+	width: auto\9; /* ie8 */
+	padding-top: 4px;
+}
+
+//*_*_*_*_*_*_*_* ShowMoves Section *_*_*_*_*_*_*//
+
+#show-moves,
+#scoreboard-container {
+	position: relative;
+	height: 20%;
+	overflow: hidden;
+}
+
+#hum-move-img,
+#hum-end-img,
+#com-move-img,
+#com-end-img {
+	height: 6rem;
+	width: auto;
+}
+
+#moves-text {
+	width: 33%;
+	padding-left: 0.6rem;
+	padding-right: 0.6rem;
+}
+
+//*_*_*_*_*_*_*_* Feedback Section *_*_*_*_*_*_*//
+
+#feedback-text {
+	position: relative;
+	height: 5%;
+	overflow: hidden;
+}
+
+#game-winner-text {
+	font-size: 1.1rem;
+	color: #5cc0dd;
+}
+
+//*_*_*_*_*_*_*_* Scoreboard Section *_*_*_*_*_*_*//
+
+#scoreboard-container {
+	padding: 10px;
+}
+
+#scoreboard-outer {
+	position: relative;
+	min-width: 180px;
+	width: 70%;
+	height: 100%;
+	background-color: #f7cd84;
+	border: 5px double #1f2937;
+	background-image: repeating-linear-gradient(
+		223deg,
+		rgba(255, 255, 255, 0.25),
+		rgba(255, 255, 255, 0.25) 1px,
+		transparent 0px,
+		transparent 2px
+	);
+}
+
+#scoreboard-inner {
+	display: flex;
+	justify-content: space-around;
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+}
+
+.score-side {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.score-display {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #ffffff;
+	border: 1px solid #1f2937;
+	width: 50%;
+	height: 70%;
+	border-radius: 5%;
+}
+
+#score-hum,
+#score-com {
+	color: #5cc0dd;
+	text-align: center;
+	font-size: calc(1.6rem + 1.6vh);
+	font-family: monospace;
+}
+
+//*_*_*_*_*_*_*_* Music Section *_*_*_*_*_*_*//
+
+#music {
+	height: 10%;
+	overflow: hidden;
+}
+
+//*_*_*_*_*_*_*_* Breakpoints *_*_*_*_*_*_*//
+
+@media screen and (max-height: 600px) {
+	.btn img {
+		padding-top: 5px;
+		padding-left: 10px;
+		padding-right: 10px;
+		max-height: 60px;
+	}
+}
+
+@media screen and (max-width: 374px) {
+	.weapon {
+		margin-right: 5px;
+		margin-left: 5px;
+		padding: 10px;
+	}
+
+	span {
+		font-size: 0.7rem;
+	}
+	.btn img {
+		padding-bottom: 4px;
+	}
+
+	#hum-move-img,
+	#hum-end-img,
+	#com-move-img,
+	#com-end-img {
+		height: 5rem;
+		width: auto;
+	}
+}
+
+@media screen and (max-width: 315px) {
+	p {
+		font-size: 0.6rem;
+	}
+}
+
+@media screen and (max-width: 300px) {
+	span {
+		font-size: 0.6rem;
+		padding: 0px;
+	}
+
+	#weapons {
+		height: 15%;
+	}
+}
+
+//*_*_*_*_*_*_*_* Animations  *_*_*_*_*_*_*//
+
+.slow-fade-in {
+	animation: slowFadeIn 2s;
+}
+
+@keyframes slowFadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.animate-ice-cream {
+	animation: fly-in-ice 1.5s ease-in-out backwards;
+}
+
+@keyframes fly-in-ice {
+	0% {
+		transform: translate(70px, -40px) rotate(40deg) scale(0.5);
+	}
+
+	100% {
+		transform: none;
+	}
+}
+
+.animate-ice-cream-shake {
+	animation: shakeIce 2s 1;
+}
+
+@keyframes shakeIce {
+	25% {
+		transform: rotate(20deg);
+	}
+
+	50% {
+		transform: rotate(-10deg);
+	}
+
+	75% {
+		transform: rotate(20deg);
+	}
+
+	100% {
+		transform: none;
+	}
+}
+
+.animate-ice-cream-zoom {
+	animation: iceZoom 5s 1;
+}
+
+@keyframes iceZoom {
+	0% {
+		transform: none;
+		opacity: 1;
+	}
+	20% {
+		transform: scale(0.5);
+		opacity: 1;
+	}
+	30% {
+		transform: none;
+		opacity: 1;
+	}
+	40% {
+		transform: scale(0.5);
+		opacity: 1;
+	}
+	50% {
+		transform: none;
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.animate-from-left {
+	animation: fly-in-from-left 0.4s ease-in-out backwards;
+}
+
+@keyframes fly-in-from-left {
+	0% {
+		transform: translate(-100px, -100px) rotate(-90deg) scale(0.5);
+	}
+
+	100% {
+		transform: none;
+	}
+}
+
+.animate-from-right {
+	animation: fly-in-from-right 0.4s ease-in-out backwards;
+}
+
+@keyframes fly-in-from-right {
+	0% {
+		transform: rotate(90deg) translate(-100px, -100px) scale(0.5);
+	}
+
+	100% {
+		transform: none;
+	}
+}
+
+.fade-in-text {
+	animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.fade-in-slow {
+	animation: fadeInSlow 3s;
+}
+
+@keyframes fadeInSlow {
+	0% {
+		opacity: 0;
+	}
+	75% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.fade-in-winner {
+	animation: winnerZoom 2s 1;
+}
+
+@keyframes winnerZoom {
+	0% {
+		transform: none;
+		opacity: 0;
+	}
+	20% {
+		transform: scale(1.5);
+	}
+	30% {
+		transform: none;
+	}
+	40% {
+		transform: scale(1.5);
+	}
+	50% {
+		transform: none;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.winner-text-animation {
+	animation: winnerTextAnimate 4s 1;
+}
+
+@keyframes winnerTextAnimate {
+	0% {
+		transform: none;
+		opacity: 0;
+	}
+	50% {
+		transform: scale(1.2);
+		opacity: 1;
+	}
+	60% {
+		transform: none;
+	}
+	70% {
+		transform: scale(1.2);
+	}
+	80% {
+		transform: none;
+	}
+}
+
+.fade-in-loser {
+	animation: loserZoom 2s 1;
+}
+
+@keyframes loserZoom {
+	0% {
+		transform: none;
+		opacity: 0;
+	}
+	20% {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
 }

@@ -3,75 +3,94 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Page Title</title>
+		<title>RPS</title>
 		<link href="css/main.min.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div class="container-fluid">
-			<div class="row justify-content-center align-items-center">
-				<div class="col-9 display-6">
-					Heya! Let's play 'til someone gets 3 points. <br />Rock,
-					paper, or scissors?
+		<div id="app-container">
+			<div class="d-flex flex-column justify-content-start" id='kitchen'>
+				<div class="d-flex justify-content-center align-items-center mb-3" id='kitchen-scene'>
+					<div class="header-text m-3 text-center">
+						<p class="hidden" id='header-text-intro'>Who gets the last ice cream in the freezer: You, or your annoying roommate? The first one to get three wins, wins it!</p>
+						<div class="d-none d-flex flex-column justify-content-center align-items-center" id="game-end-btn">
+							<p class='py-1'>Want to give it another go?</p>
+							<button type="button"
+							class="btn btn-info maxw-80" onclick="location.reload();">Play again</button>
+						</div>
+					</div>
+					<img id='ice-cream' />
 				</div>
 			</div>
-			<div class="row justify-content-center align-items-center">
-				<div class="col-3">
-					<button
-						type="button"
-						class="btn btn-rock d-flex flex-column align-items-stretch maxw-80 p-3"
-						id="rocky"
-					>
-						<img src="images/rock.png" />
-						<span>Rock</span>
-					</button>
+			<div class="d-flex justify-content-around" id="weapons">
+				<button
+					type="button"
+					class="btn d-flex flex-column justify-content-center weapon"
+					id="id-rock"
+				>
+					<img id='rock-img' src="images/rock-fist-sized.png" />
+					<span>Rock</span>
+				</button>
+				<button
+					type="button"
+					class="btn d-flex flex-column justify-content-center weapon"
+					id="id-paper"
+				>
+					<img src="images/paper-hand-sized.png" />
+					<span>Paper</span>
+				</button>
+				<button
+					type="button"
+					class="btn d-flex flex-column justify-content-center weapon"
+					id="id-scissors"
+				>
+					<img id='scissors-img' src="images/scissors-hand-sized.png" />
+					<span>Scissors</span>
+				</button>
+			</div>
+			<div class="d-flex hidden justify-content-center align-items-center" id="show-moves">
+					<img class="" id="hum-move-img"></img>
+					<img class="hidden" id="hum-end-img"></img>
+					<p class="text-center" id="moves-text"></p>
+					<img class="" id="com-move-img"></img>
+					<img class="hidden" id="com-end-img"></img>
+			</div>
+			<div id='feedback-text'>
+				<div class="hidden d-flex flex-column justify-content-center align-items-center" id="winner-row">
+					<p class="col-12 adj-p text-center fade-in-slow" id="winner-text"></p>
+					<p class="hidden col-12 adj-p text-center" id="game-winner-text"></p>
 				</div>
-				<div class="col-3">
-					<button
-						type="button"
-						class="btn btn-paper d-flex flex-column align-items-stretch maxw-80 p-3"
-						id="papery"
-					>
-						<img src="images/paper.png" />
-						<span>Paper</span>
-					</button>
+			</div>
+			<div class="d-flex justify-content-center align-items-center" id='scoreboard-container'>
+				<div id='scoreboard-outer'>
+					<div id='scoreboard-inner'>
+						<div class='score-side'>
+							<p>You</p>
+							<div class="score-display">
+								<div id='score-hum'>0</div>
+							</div> 
+						</div>
+						<div class='score-side'>
+							<p>Roommate</p>
+							<div class="score-display">
+								<div id='score-com'>0</div>
+							</div> 
+						</div>
+					</div>
 				</div>
-				<div class="col-3">
-					<button
-						type="button"
-						class="btn btn-scissors d-flex flex-column align-items-stretch maxw-80 px-0 py-3"
-						id="scissory"
-					>
-						<img class="p-3" src="images/scissors.png" />
-						<span>Scissors</span>
-					</button>
-				</div>
+			</div>
+			<div class='d-flex justify-content-center align-items-center mx-3' id='music'>
+				<p>Press "play" for background music</p>
+				<audio src="images/Sneaky-Snitch.mp3" controls>
+					<div class='d-flex justify-content-center'>
+						<embed 
+							src="images/Sneaky-Snitch.mp3"
+							width="300"
+							height="90"
+							loop="true"
+							autostart="true">
+				</audio>
 			</div>
 		</div>
-		<div
-			class="container-fluid"
-			id="main-feedback-container"
-			
-		>
-			<div class="row d-none" id="feedback-row">
-					<img class="col-3" id="hum-move-img"></img>
-					<div class="col-6">
-						<p id="feedback-para"></p>
-						<p id="feedback-score"></p>
-					</div>	
-					<img class="col-3" id="com-move-img"></img>
-			</div>
-
-			<div class="row justify-content-center align-items-center" id="score-container">
-				<!-- <p class="col-7" id="feedback-score"></p> -->
-			</div>
-
-			<div class="row d-none" id="game-end-row">
-				<img class="col-5" id="game-end-img"></img>
-				<p class="col-5" id="game-end-para"></p>
-			</div>
-
-		</div>
-	
 		<footer>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
@@ -82,3 +101,4 @@
 		</footer>
 	</body>
 </html>
+
